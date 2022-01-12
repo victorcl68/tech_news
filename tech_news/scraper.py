@@ -18,7 +18,9 @@ def fetch(url):
 
 # Requisito 2
 def scrape_novidades(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(html_content)
+    css_selector_string = "div.tec--list.tec--list--lg h3 > a ::attr(href)"
+    return selector.css(css_selector_string).getall()
 
 
 # Requisito 3
