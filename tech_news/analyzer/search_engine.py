@@ -17,7 +17,22 @@ def search_by_title(title):
 
 # Requisito 7
 def search_by_date(date):
-    """Seu código deve vir aqui"""
+    try:
+        datetime.strptime(date, "%Y-%m-%d")
+    except ValueError:
+        raise ValueError("Data inválida")
+    # https://qastack.com.br/programming/16870663/how-do-i
+    # -validate-a-date-string-format-in-python
+
+    query = {"timestamp": {"$regex": date}}
+    news = search_news(query)
+    news_list = []
+    for each_news in news:
+        title_tuple = each_news["title"]
+        url_tuple = each_news["url"]
+        news_list.append((title_tuple, url_tuple))
+
+    return news_list
 
 
 # Requisito 8
