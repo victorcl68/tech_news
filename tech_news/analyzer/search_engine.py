@@ -50,4 +50,14 @@ def search_by_source(source):
 
 # Requisito 9
 def search_by_category(category):
-    """Seu código deve vir aqui"""
+    query = {
+        "categories": {"$elemMatch": {"$regex": category, "$options": "i"}}
+    }
+    news = search_news(query)
+    news_list = []
+    for each_news in news:
+        title_tuple = each_news["title"]
+        url_tuple = each_news["url"]
+        news_list.append((title_tuple, url_tuple))
+
+    return news_list
