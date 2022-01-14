@@ -1,6 +1,6 @@
 # Tech News
 
-# Habilidades
+## Habilidades
 
 - Utilizar o terminal interativo do Python;
 - Escrever seus próprios módulos e importá-los em outros códigos;
